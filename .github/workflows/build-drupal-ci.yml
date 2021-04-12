@@ -30,7 +30,7 @@ jobs:
         context: ./drupal-ci
         push: true
         tags: |
-          ghcr.io/ramsalt/drupal-ci:9
+          ghcr.io/${{ github.repository }}/drupal-ci:9
         build-args: |
           DRUPAL_IMAGE_TAG=9
     -
