@@ -8,8 +8,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ['7.4', '8.0']
+        php: ['7.3', '7.4', '8.0']
         drupal: ['8', '9']
+        exclude:
+        - php: '8.0'
+          drupal: '8'
     steps:
     -
       name: Checkout
