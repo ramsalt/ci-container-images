@@ -5,6 +5,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.0']
+        drupal: ['8', '9']
     steps:
     -
       name: Checkout
@@ -30,9 +35,10 @@ jobs:
         context: ./drupal-ci
         push: true
         tags: |
-          ghcr.io/${{ github.repository }}/drupal-ci:9
+          ghcr.io/${{ github.repository }}/drupal-ci:${{ matrix.drupal }}-php${{ matrix.php }}
         build-args: |
-          DRUPAL_IMAGE_TAG=9
+          PHP_VERSION=${{ matrix.php }}
+          DRUPAL_IMAGE_TAG=${{ matrix.drupal }}
     -
       name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
