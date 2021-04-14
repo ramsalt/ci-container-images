@@ -5,6 +5,8 @@ FROM drupal:${DRUPAL_IMAGE_TAG}-php${PHP_VERSION}-apache
 
 USER root
 
+WORKDIR /tmp
+
 RUN  set -ex; \
     # Remove the default drupal installation, leaving an empty directory
     rm -rf /opt/drupal && mkdir /opt/drupal ; \
@@ -79,3 +81,5 @@ RUN  set -ex; \
     apt-get autoclean -y ;\
     apt-get clean -y ;\
     rm -rf /var/lib/apt/lists/*
+
+WORKDIR /opt/drupal
