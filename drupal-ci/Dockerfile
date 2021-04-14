@@ -6,6 +6,8 @@ FROM drupal:${DRUPAL_IMAGE_TAG}-php${PHP_VERSION}-apache
 USER root
 
 RUN  set -ex; \
+    # Remove the default drupal installation, leaving an empty directory
+    rm -rf /opt/drupal && mkdir /opt/drupal ; \
     apt-get update ; \
     apt-get install --yes \
         gnupg2 \
@@ -76,4 +78,4 @@ RUN  set -ex; \
     apt-get autoremove -y ;\
     apt-get autoclean -y ;\
     apt-get clean -y ;\
-    rm -rf /var/lib/apt/lists/* 
+    rm -rf /var/lib/apt/lists/*
