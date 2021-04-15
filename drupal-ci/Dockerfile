@@ -62,6 +62,14 @@ RUN  set -ex; \
         xsl \
         zip \
     ; \
+    pecl install \
+        redis \
+        xdebug \
+    ; \
+    docker-php-ext-enable \
+        redis \
+        xdebug \
+    ; \
     \
     echo 'memory_limit = -1' > /usr/local/etc/php/php-cli.ini ; \
     \
