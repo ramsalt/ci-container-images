@@ -65,10 +65,12 @@ RUN  set -ex; \
     pecl install \
         redis \
         xdebug \
+        imagick \
     ; \
     docker-php-ext-enable \
         redis \
         xdebug \
+        imagick \
     ; \
     \
     echo 'memory_limit = -1' > /usr/local/etc/php/php-cli.ini ; \
