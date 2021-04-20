@@ -92,4 +92,6 @@ RUN  set -ex; \
     apt-get clean -y ;\
     rm -rf /var/lib/apt/lists/*
 
+COPY files/ImageMagick-6/*.xml /etc/ImageMagick-6/
+
 WORKDIR /opt/drupal
