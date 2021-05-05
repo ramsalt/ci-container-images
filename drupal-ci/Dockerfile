@@ -40,6 +40,7 @@ RUN  set -ex; \
         wget \
         tidy \
         jq \
+        sqlite3 \
         ; \
     \
     # Install Chrome browser repos.
