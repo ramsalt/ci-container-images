@@ -82,7 +82,6 @@ RUN  set -ex; \
         ./configure; \
         make; \
         make install; \
-    ; \
     else \
         pecl install imagick; \
     fi; \
