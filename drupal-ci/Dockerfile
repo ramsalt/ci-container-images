@@ -72,7 +72,7 @@ RUN  set -ex; \
         # imagick \
     ; \
     \
-    if [ "$(printf %.1s $PHP_VERSION)" = '8' ]; then ( \
+    if [ "$(printf %.1s $PHP_VERSION)" = '8' ]; then \
         # Imagick dev
         cd /tmp; \
         git clone https://github.com/Imagick/imagick; \
@@ -82,8 +82,8 @@ RUN  set -ex; \
         ./configure; \
         make; \
         make install; \
-    ); \
-    else: \
+    ; \
+    else \
         pecl install imagick; \
     fi; \
     \
