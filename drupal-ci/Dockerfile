@@ -3,9 +3,6 @@ ARG DRUPAL_IMAGE_TAG=9
 
 FROM drupal:${DRUPAL_IMAGE_TAG}-php${PHP_VERSION}-apache
 
-ENV PHP_VERSION=${PHP_VERSION}
-ENV DRUPAL_IMAGE_TAG=${DRUPAL_IMAGE_TAG}
-
 USER root
 
 WORKDIR /tmp
@@ -69,23 +66,8 @@ RUN  set -ex; \
     pecl install \
         redis \
         xdebug \
-        # imagick \
+        imagick \
     ; \
-    \
-    if [ "$(printf %.1s $PHP_VERSION)" = '8' ]; then \
-        # Imagick dev
-        cd /tmp; \
-        git clone https://github.com/Imagick/imagick; \
-        cd imagick; \
-        git checkout 132a11fd26675db9eb9f0e9a3e2887c161875206; \
-        phpize; \
-        ./configure; \
-        make; \
-        make install; \
-    else \
-        pecl install imagick; \
-    fi; \
-    \
     docker-php-ext-enable \
         redis \
         xdebug \
